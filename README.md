@@ -1,2 +1,9 @@
 # terraform-beginner
-Learning the basics of Terraform
+Learning the basics of Terraform. This is my first time diving into Terraform and I just want to say- the documentation is beautiful. I was a bit nervous to dive in and learn the syntax, but the documentation is extremely thorough, which I love! I ran these files through my terminal with 'terraform init', 'terraform validate', 'terraform fmt', 'terraform plan', 'terraform apply', then 'terraform destroy'. A special reminder to myself: dont forget to hit yes after you run 'terraform destroy'.. I have walked away without actually waiting and clicking yes.. oopsie. 
+
+Starting out very basic, in exercise 1 it is just simply creating an EC2 instance with a few specific attributes. Everything is all in one document (providers + resource).
+
+In exercise 2, I added variables. There are three files (instance.tf, providers.tf, vars.tf). Moving variables into their own file definetly has benefits for code that is going to be changed frequently or re-used in different environments. It keeps the isntance.tf file very clean with less hardcoding. 
+
+In exercise 3, I added a lot. I added a new resource "aws_key_pair", then mentioned this resource in the "aws_instance" resource - referencing a resource inside a resource! I made the key through terminal with 'ssh-keygen' and read it with terraforms file function. In addition, I used user data! Originally I was going to use provisioning, but I understand that it should be used as a last resort and user data should be used for majority of cases. So, user data it is in this case. Additionally, I set up an output to be returned with the public IP address in the console so I can connect without even opening the aws console - awesome!! Then, finally, I added to where the state is maintained in a centralized location - an s3 bucket I made. The terraform.tfstate is no longer managed locally on my machine, but through the s3 bucket. This is good practice for when working amongst teams, it keeps the state in sync as it gets updated.
+
